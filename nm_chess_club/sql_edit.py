@@ -1,16 +1,8 @@
-# This could be replaced with MySQL, etc.
-from . import sqlite3_database
 
-def get_module():
-    return sqlite3_database
-
-def create_database():
+def create_database(cursor):
     """
     Creates new database if the old one doesn't exist
     """
-    # TODO throw exception if database already exists
-    (connection, cursor) = get_module().get_cursor()
-
     # dues are stored in cents
     cursor.executescript(
 """
@@ -70,6 +62,3 @@ CREATE TABLE colors(
     cursor.executemany("INSERT INTO colors (color) VALUES (?)",
                        [(color ,) for color in
                         ['Black', 'White']])
-
-    connection.commit()
-    connection.close()
