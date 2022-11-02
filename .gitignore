@@ -1,3 +1,4 @@
 *~
 *.db
 __pycache__
+nm_chess_club.egg-info
