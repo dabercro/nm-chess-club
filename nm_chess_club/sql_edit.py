@@ -62,3 +62,9 @@ CREATE TABLE colors(
     cursor.executemany("INSERT INTO colors (color) VALUES (?)",
                        [(color ,) for color in
                         ['Black', 'White']])
+
+def update_table(cursor, action, table_name, key_value_pairs):
+    keys = key_value_pairs.keys()
+    statement = "{action} INTO {table} ({keys}) VALUES ({question_marks})".format(
+        action=action, table=table_name, keys=','.join(keys), question_marks=','.join(['?' for _ in keys]))
+    cursor.execute(statement, tuple([key_value_pairs[key] for key in keys]))

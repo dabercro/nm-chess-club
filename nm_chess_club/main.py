@@ -33,6 +33,9 @@ def main(stdscr, **connection_params):
         for line in text:
             stdscr.addstr(' ' * LEFT_MARGIN + line + '\n')
 
+        stdscr.addstr(' ' * LEFT_MARGIN +'\n')
+        stdscr.addstr(' ' * LEFT_MARGIN +'Hit ESC to quit.\n')
+
         stdscr.move(cursor_y + TOP_MARGIN, cursor_x + LEFT_MARGIN)
 
         stdscr.refresh()

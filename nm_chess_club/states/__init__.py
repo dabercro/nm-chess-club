@@ -15,7 +15,7 @@ class State(object):
         raise NotImplementedError
 
     def cursor_position(self):
-        raise NotImplementedError
+        return 0, len(self.display()) + 2
 
     def running(self):
         return True
